@@ -1,3 +1,49 @@
 ﻿@page "/"
 
-<h1>Hello, world!</h1>
+<h1>Hello, this is a simple calculator!</h1>
+
+<div class="calculator">
+    <div class="calculatorInput">
+        <input
+            type="number"
+            @bind="InputValue" 
+            placeholder="Enter a number" />
+    </div>
+
+    <div class="calculatorOperations">
+        <button type="button" @onclick="Addition">+</button>
+        <button type="button" @onclick="Subtraction">-</button>
+        <button type="button" @onclick="Multiplication">x</button>
+        <button type="button" @onclick="Division">/</button>
+        <button type="button" @onclick="SetResult">Set Value</button>
+    </div>
+
+    <div class="calculatorOutput">
+        <input @bind="Result" disabled>
+    </div>
+</div>
+
+@code {
+    double Result { get; set; } = 0;
+    double InputValue { get; set; } = 0;
+
+    void Addition () {
+        Result += InputValue;
+    }
+
+    void Subtraction() {
+        Result -= InputValue;
+    }
+
+    void Division() {
+        Result /= InputValue;
+    }
+
+    void Multiplication() {
+        Result *= InputValue;
+    }
+
+    void SetResult() {
+        Result = InputValue;
+    }
+}
